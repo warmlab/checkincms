@@ -1,0 +1,83 @@
+<scroll-view class="scrollarea" scroll-y type="list">
+<view class="profile-info">
+  <image class="avatar" src="{{userInfo.avatar_url}}" />
+  <view class="info">
+		<text class="name">{{userInfo.nickname}}</text>
+		<button size="mini" bind:tap="toEditProfile"><image mode="aspectFit" src="../../images/svgs/edit.svg"/></button>
+  </view>
+</view>
+<view class="menu-title strong">我的轨迹</view>
+<view class="reminder" wx:if="{{(reservation.last_week.reserved && !reservation.last_week.pickedup) || reservation.this_week.reserved}}">
+	<view class="reminder-item" wx:if="{{reservation.last_week.reserved}}">
+		<block wx:if="{{reservation.last_week.pickedup}}">
+		<text>您已领取了<text class="strong">本周</text>的食材，谢谢。</text>
+		</block>
+		<block wx:else>
+		<text>您已预约了<text class="strong">本周</text>的食材。需要现在领取吗？</text>
+		<button class="reminder-item-btn" size="mini" bind:tap="toPickupReservation">领取</button>
+		</block>
+	</view>
+	<text class="reminder-item" wx:if="{{reservation.this_week.reserved}}">您已预约了<text class="strong">下周</text>的食材，请务必记得前来领取。</text>
+</view>
+<view class="user-menu">
+  <navigator class="item" url="./records/checkin">
+    <text class="title">签到记录</text>
+  </navigator>
+	<!--
+  <navigator class="item" url="./records/ingredient">
+    <text class="title">食材领取记录</text>
+  </navigator>-->
+</view>
+<block wx:if="{{is_admin}}">
+	<view class="menu-title">统计</view>
+	<view class="user-menu">
+		<navigator class="item" url="/pages/admin/statistics/checkin">
+			<text class="title">签到记录</text>
+		</navigator>
+		<navigator class="item" url="/pages/admin/statistics/reservation">
+			<text class="title">食材预约
+			领取记录</text>
+		</navigator>
+		<navigator class="item" url="/pages/admin/statistics/togo">
+			<text class="title">今日外带</text>
+		</navigator>
+		<navigator class="item" url="/pages/admin/note/index">
+			<text class="title">留言板</text>
+		</navigator>
+	</view>
+	<view class="menu-title">菜谱</view>
+	<view class="user-menu">
+		<navigator class="item" url="/pages/admin/recipe/index">
+			<text class="title">今日菜谱</text>
+		</navigator>
+		<navigator class="item" url="/pages/admin/statistics/recipe">
+			<text class="title">历史菜谱</text>
+		</navigator>
+	</view>
+	<view class="menu-title">管理</view>
+	<view class="user-menu">
+		<!--<view class="item" bindtap="bindValuecard">
+			<text class="title">食材入库</text>
+		</view>
+		<navigator class="item" url="/pages/admin/ingredient/index">
+			<text class="title">食材管理</text>
+		</navigator>-->
+		<navigator class="item" url="/pages/admin/bulletin/index">
+			<text class="title">公告管理</text>
+		</navigator>
+		<navigator class="item" url="/pages/admin/company/index">
+			<text class="title">公司管理</text>
+		</navigator>
+		<navigator class="item" url="/pages/admin/staff/index">
+			<text class="title">花名册管理(开发中)</text>
+		</navigator>
+		<!--
+		<navigator class="item" url="/pages/admin/company/index">
+			<text class="title">员工管理</text>
+		</navigator>
+		<view class="item" bindtap="bindValuecard">
+			<text class="title">管理员管理</text>
+		</view>-->
+	</view>
+</block>
+</scroll-view>

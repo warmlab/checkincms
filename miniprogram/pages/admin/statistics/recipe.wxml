@@ -1,0 +1,52 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="container">
+	<view class="operation-area">
+	<radio-group class="period-group" bindchange="timePeriodOptionChange">
+		<label class="period-item">
+			<view>
+				<radio value="1" checked="true" color="#841FFD77"/>
+			</view>
+			<text>本周</text>
+		</label>
+		<label class="period-item">
+			<view>
+				<radio value="2" color="#841FFD77"/>
+			</view>
+			<text>上周</text>
+		</label>
+		<label class="period-item">
+			<view>
+				<radio value="3" color="#841FFD77"/>
+			</view>
+			<text>自定义起至日期</text>
+		</label>
+	</radio-group>
+	<view wx:if="{{time_period_option==3}}" class="date-picker-area">
+		<picker mode="date" value="{{begin_date}}" start="2024-03-01" end="2030-02-01" bindchange="bindDateChange" id="begin">
+			<text class="picker">起: {{begin_date}}</text>
+		</picker>
+		<text class="interval">-</text>
+		<picker mode="date" value="{{end_date}}" start="2024-02-01" end="2030-02-01" bindchange="bindDateChange" id="end">
+			<text class="picker">止: {{end_date}}</text>
+		</picker>
+	</view>
+</view>
+<scroll-view class="scroll-area" scroll-y="true">
+<view class="recipe-area">
+	<view wx:for="{{records}}" wx:for-item="recipe" wx:key="id" class="recipe-item">
+		<view class="recipe-info">
+			<view class="recipe-time">{{filter.format_date(recipe.begin_time)}}</view>
+			<view class="recipe-detail" wx:if="{{recipe.meal == 2}}">午餐</view>
+			<view class="recipe-detail" wx:elif="{{recipe.meal == 8}}">晚餐</view>
+			<view class="recipe-detail" wx:if="{{recipe.name}}">{{recipe.name}}</view>
+		</view>
+		<view class="dish-area">
+			<view class="dish-info" wx:for="{{recipe.dishes}}" wx:key="id">
+				<image class="dish-image" style="width:{{width}}rem; height:{{height}}rem;" mode="aspectFit" src="{{base_image_url}}/{{item.image.path}}"/>
+				<view class="dish-name">{{item.name}}</view>
+			</view>
+		</view>
+	</view>
+</view>
+</scroll-view>
+</view>

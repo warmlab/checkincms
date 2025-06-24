@@ -1,0 +1,25 @@
+<view class="container">
+<form class="info-area" bindsubmit="updateBulletinInfo">
+		<view class="view-input">
+			<text class="item-label">公告标题</text>
+			<input class="bulletin" name="title" id="title" placeholder="公告标题..." auto-focus="true" maxlength="64" value="{{bulletin.title}}" bindblur="bindTitleChange"/>
+		</view>
+		<view class="view-input">
+			<text class="item-label">公告内容</text>
+			<textarea class="bulletin" name="content" id="content" placeholder="公告内容..." rows="4" maxlength="1024" bindblur="bindContentChange" value="{{bulletin.content}}"></textarea>
+		</view>
+		<view class="view-input">
+			<text class="item-label">通告时间</text>
+			<view class="date-picker-area">
+				<picker mode="date" value="{{bulletin.begin_date}}" start="2024-02-01" end="2030-02-01" bindchange="bindDateChange" id="begin">
+					<text class="picker">起: {{bulletin.begin_date}}</text>
+				</picker>
+				<text class="interval">-</text>
+				<picker mode="date" value="{{bulletin.end_date}}" start="2024-02-01" end="2030-02-01" bindchange="bindDateChange" id="end">
+					<text class="picker">止: {{bulletin.end_date==null?"":bulletin.end_date}}</text>
+				</picker>
+			</view>
+		</view>
+		<button form-type="submit" class="btn-row">提交</button>
+</form>
+</view>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/checkin.css')}}">
+  </head>
+  <body>
+    <form action="signup" method="post">
+      <label for="staff-name" class="form-label">请输入您的姓名</label>
+      <div class="row" id="staff-name">
+          <div class="col">
+            <input type="text" class="form-control" name="last_name" placeholder="姓氏" aria-label="Last name" required oninvalid="setCustomValidity('请输入您的姓氏');" oninput="setCustomValidity('');">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" name="first_name" placeholder="名字" aria-label="First name" required oninvalid="setCustomValidity('请输入您的名字');" oninput="setCustomValidity('');">
+          </div>
+        </div>
+      <label for="companies" class="form-label">请选择您的公司</label>
+      {% for c in companies -%}
+      <div class="form-check" id="companies">
+          <input class="form-check-input" type="radio" name="company_id" id="company_radio_{{c.id}}" value="{{c.id}}" required oninvalid="setCustomValidity('请选择您所在的公司');" oninput="setCustomValidity('');">
+          <label class="form-check-label" for="company_radio_{{c.id}}">{{c.name}}</label>
+      </div>
+      {%- endfor %}
+      <div class="mb-3">
+          <label for="email-address" class="form-label">请输入您的电子邮箱</label>
+          <input type="email" class="form-control" id="email-address" name="email-address" placeholder="name@example.com">
+      </div>
+      <div class="mb-3">
+          <label for="phone-number" class="form-label">请输入您的电话号码</label>
+          <input type="tel" class="form-control" id="phone-number" name="phone-number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="403-123-4567">
+      </div>
+      <button type="submit" class="btn btn-customer rounded-pill">注册</button>
+    </form>
+  </body>
+</html>

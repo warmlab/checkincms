@@ -1,0 +1,90 @@
+<view class="container">
+	<view class="operation-area">
+	<view class="search-area">
+		<text class="strong">员工姓名</text>
+		<input placeholder="张三" auto-focus bindinput="bindStaffName"/> 
+	</view>
+	<view class="strong">选择公司</view>
+	<checkbox-group class="company-area" bindchange="companiesChange">
+		<label wx:for="{{companies}}" wx:key="id" class="company-item">
+			<checkbox value="{{item.id}}" data-index="{{index}}" color="#841FFD" checked="{{item.checked}}"/>
+			<text>{{item.name}}</text>
+		</label>
+	</checkbox-group>
+	<radio-group class="period-group" bindchange="timePeriodOptionChange">
+		<label class="period-item">
+			<view>
+				<radio value="1" checked="true" color="#841ffd"/>
+			</view>
+			<text>本周</text>
+		</label>
+		<label class="period-item">
+			<view>
+				<radio value="2" color="#841ffd"/>
+			</view>
+			<text>上周</text>
+		</label>
+		<label class="period-item">
+			<view>
+				<radio value="3" color="#841ffd"/>
+			</view>
+			<text>自定义起至日期</text>
+		</label>
+	</radio-group>
+	<view wx:if="{{time_period_option==3}}" class="date-picker-area">
+		<picker mode="date" value="{{begin_date}}" start="2024-02-01" end="2030-02-01" bindchange="bindDateChange" id="begin">
+			<text class="picker">起: {{begin_date}}</text>
+		</picker>
+		<text class="interval">-</text>
+		<picker mode="date" value="{{end_date}}" start="2024-02-01" end="2030-02-01" bindchange="bindDateChange" id="end">
+			<text class="picker">止: {{end_date}}</text>
+		</picker>
+	</view>
+	<view class="button-group">
+		<button bind:tap="toSendEmail">发送E-Mail</button>
+		<button bind:tap="toPreview">预览</button>
+	</view>
+</view>
+<scroll-view class="scroll-area" scroll-y="true">
+<view class="record-area">
+	<view wx:for="{{records}}" wx:for-item="record" wx:key="index" class="record-item">
+		<view class="personal-info">
+			<view class="name">{{record.last_name}}{{record.first_name}}</view>
+			<view class="company">{{record.company}}</view>
+		</view>
+		<view class="checkin-info">
+			<block wx:for="{{record.days}}" wx:key="index">
+			<view wx:if="{{item>0}}" class="status">
+					<image mode="aspectFit" src="../../../images/svgs/complete3.svg"/>
+			</view>
+			<view wx:else class="status">
+					<image src="../../../images/svgs/unfinished.svg"/>
+			</view>
+			</block>
+		</view>
+	</view>
+	<block wx:for="{{dates}}" wx:key="index">
+			<view wx:if="{{item.status==0}}" class="record-item notcheckedin">
+					<image mode="aspectFit" src="../../../images/svgs/unfinished.svg"/>
+					<span>{{item.date}}</span>
+					<button size="mini" class="btn btn-backdate">
+						<text>补签</text>
+						<image mode="aspectFit" src="../../../images/svgs/right.svg" />
+					</button>
+			</view>
+			<view wx:elif="{{item.status==2}}" class="record-item tocheckin">
+					<image src="../../../images/svgs/inprogress.svg"/>
+					<span>{{item.date}}</span>
+			</view>
+			<view wx:elif="{{item.status==3}}" class="record-item tocheckin">
+					<image src="../../../images/svgs/inprogress.svg"/>
+					<span>{{item.date}}</span>
+			</view>
+			<view wx:else class="record-item checkedin">
+					<image src="../../../images/svgs/complete.svg"/>
+					<span>{{item.date}}</span>
+			</view>
+	</block>
+</view>
+</scroll-view>
+</view>

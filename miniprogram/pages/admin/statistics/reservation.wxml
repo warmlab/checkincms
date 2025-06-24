@@ -1,0 +1,103 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="container">
+	<view class="operation-area">
+	<view class="search-area">
+		<text class="strong">员工姓名</text>
+		<input placeholder="张三" auto-focus bindinput="bindStaffName"/> 
+	</view>
+	<view class="strong">选择公司</view>
+	<checkbox-group class="company-area" bindchange="companiesChange">
+		<label wx:for="{{companies}}" wx:key="id" class="company-item">
+			<checkbox value="{{item.id}}" data-index="{{index}}" color="#841FFD" checked="{{item.checked}}"/>
+			<text>{{item.name}}</text>
+		</label>
+	</checkbox-group>
+	<radio-group class="period-group" bindchange="timePeriodOptionChange">
+		<label class="period-item">
+			<view>
+				<radio value="1" checked="true" color="#841ffd"/>
+			</view>
+			<text>本周</text>
+		</label>
+		<label class="period-item">
+			<view>
+				<radio value="2" color="#841ffd"/>
+			</view>
+			<text>上周</text>
+		</label>
+		<label class="period-item">
+			<view>
+				<radio value="3" color="#841ffd"/>
+			</view>
+			<text>自定义起至日期</text>
+		</label>
+	</radio-group>
+	<view wx:if="{{time_period_option==3}}" class="date-picker-area">
+		<picker mode="date" value="{{begin_date}}" start="2024-02-01" end="2030-02-01" bindchange="bindDateChange" id="begin">
+			<text class="picker">起: {{begin_date}}</text>
+		</picker>
+		<text class="interval">-</text>
+		<picker mode="date" value="{{end_date}}" start="2024-02-01" end="2030-02-01" bindchange="bindDateChange" id="end">
+			<text class="picker">止: {{end_date}}</text>
+		</picker>
+	</view>
+	<view class="button-group">
+		<button bind:tap="toSendEmail">发送E-Mail</button>
+		<button bind:tap="toPreview">预览</button>
+	</view>
+</view>
+<scroll-view class="scroll-area" scroll-y="true">
+<view class="summary-area" wx:if="{{records}}">
+	<view class="summary-item">
+		<text>预约总人数</text>
+		<text>{{total_person}}</text>
+	</view>
+	<view class="summary-item">
+		<text>预约总次数</text>
+		<text>{{total_reservation}}</text>
+	</view>
+	<view class="summary-item">
+		<text>领取总次数</text>
+		<text>{{total_pickup}}</text>
+	</view>
+	<view class="divider"></view>
+</view>
+<view class="record-area">
+	<view wx:for="{{records}}" wx:for-item="record" wx:key="index" class="record-item">
+		<view class="personal-info">
+			<view class="name">{{record.staff.last_name}}{{record.staff.first_name}}</view>
+			<view class="company">{{record.staff.company.name}}</view>
+		</view>
+		<view class="checkin-info">
+			<block wx:if="{{record.reservations.length>0}}">
+			<block wx:for="{{record.reservations}}" wx:key="index">
+			<view wx:if="{{item.reservation>0}}" class="status reserved">
+				<view class="status-info">
+					<text>{{filter.format_date(item.occur_time)}}预约</text>
+				</view>
+				<view class="status-info">
+					<image mode="aspectFit" wx:if="{{item.occur_time}}" src="../../../images/svgs/complete3.svg"/>
+				</view>
+				<view class="status-info" style="justify-content: flex-end;" wx:if="{{item.pickup_time}}">
+					<text>{{filter.format_date(item.pickup_time)}}领取</text>
+				</view>
+				<view class="status-info" wx:if="{{item.pickup_time}}">
+					<image mode="aspectFit" wx:if="{{item.pickup_time}}" src="../../../images/svgs/complete.svg"/>
+				</view>
+			</view>
+			</block>
+			</block>
+			<view wx:else class="status notreserved">
+				<view class="status-info">
+					<text>这家伙很懒，什么也没约</text>
+				</view>
+				<view class="status-info">
+					<image src="../../../images/svgs/unfinished.svg"/>
+				</view>
+			</view>
+
+		</view>
+	</view>
+</view>
+</scroll-view>
+</view>

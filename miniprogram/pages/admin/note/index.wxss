@@ -1,0 +1,133 @@
+.operation-area {
+	display: flex;
+	flex-direction: column;
+}
+
+.operation-area .search-area {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.operation-area .search-area input {
+	border: solid #841FFD33;
+	border-radius: .5rem;
+	flex-grow: 2;
+	margin-left: .5rem;
+	padding: .5rem .2rem;
+	background-color: white;
+}
+
+.operation-area .company-area {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.operation-area .company-area .company-item {
+	margin-right: 1rem;
+}
+
+.period-group {
+	display: flex;
+	flex-direction: row;
+	padding: .5rem 0;
+}
+
+.period-group .period-item {
+	display: flex;
+	flex-direction: row;
+	margin-right: 1rem;
+}
+
+.date-picker-area {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 0.5rem;
+	justify-content: space-between;
+}
+
+.date-picker-area picker {
+	flex-grow: 2;
+	border: solid .1rem #afb0b2;
+	border-radius: .5rem;
+	padding: .5rem;
+	background-color: white;
+}
+
+.date-picker-area .interval {
+	margin: 0 .5rem;
+}
+
+.company-area {
+	display: flex;
+	flex-direction: column;
+}
+
+.title-area {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: .5rem;
+	overflow: hidden;
+}
+
+.title-area .title-name {
+	font-size: 1.5rem;
+	font-weight: bolder;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.title-area .title-btn {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0;
+	background-color: #841FFD;
+	color: white;
+	width: 7rem;
+	border-radius: .5rem;
+}
+
+.title-area .title-btn image {
+	height: 1rem;
+	width: 1rem;
+}
+
+.note-area {
+	display: flex;
+	flex-direction: column;
+	margin-top: 1rem;
+}
+
+.note-area .note-item {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: .5rem;
+	border-radius: .5rem;
+}
+
+.note-area .note-item .note-title {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: #841FFD33;
+	/*color: white;*/
+	overflow: hidden;
+	padding: .5rem;
+	font-weight: bold;
+	border-radius: .5rem .5rem 0 0;
+}
+
+.note-area .note-item .note-content {
+	display: flex;
+	justify-content: flex-start;
+	background-color: white;
+	padding: .5rem;
+	font-size: 1.1rem;
+	border-radius: 0 0 .5rem .5rem;
+}

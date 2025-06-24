@@ -1,0 +1,11 @@
+<view class="container">
+	<view class="form-area">
+			<view class="form-field">
+				<text class="form-field-header">公司名称</text>
+				<input type="text" class="form-field-body" maxlength="120" placeholder="公司名称" value="{{company.name}}" bindinput="onNameChange" />
+			</view>
+			<button class="btn-row" bind:tap="updateCompanyInfo">提交</button>
+			<!--
+			<button type="warn" class="btn-row-warn" bind:tap="deleteCompanyInfo">删除</button>-->
+	</view>
+</view>

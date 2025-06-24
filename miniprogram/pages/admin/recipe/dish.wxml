@@ -1,0 +1,27 @@
+<view class="container">
+	<form bindsubmit="saveDish">
+		<view class="button-group">
+			<button bindtap="chooseImages">选择图片</button>
+			<button formType="submit">提交</button>
+		</view>
+		<view class="form-detail">
+			<label class="detail-header">菜品名称</label>
+			<input type="text" class="detail-input" name="name" maxlength="64" placeholder="四喜丸子" focus="true" value="{{dish.name}}" />
+		</view>
+		<view class="form-detail">
+			<label class="detail-header">菜品说明</label>
+			<textarea class="detail-note" name="note" placeholder="这道菜的特点等..." rows="2" maxlength="1024" value="{{dish.note}}"></textarea>
+		</view>
+		<view class="form-images">
+			<view class="form-image" wx:for="{{images}}" wx:key="id">
+				<image mode="widthFix" src="{{base_image_url}}/{{item.path}}" />
+				<text data-index="{{index}}" data-source="original" bindtap="removeImage">✕</text>
+				<!--text class="fa fa-times" data-index="{{index}}" data-source="original" data-type="detail" bindtap="removeImage"/-->
+			</view>
+			<view class="form-image" wx:for="{{images_choosed}}" wx:key="index">
+				<image mode="widthFix" src="{{item.tempFilePath}}" />
+				<text data-index="{{index}}" data-source="choosed" bindtap="removeImage">✕</text>
+			</view>
+		</view>
+	</form>
+</view>

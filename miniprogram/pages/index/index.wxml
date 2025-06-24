@@ -1,0 +1,64 @@
+<view class="home-container">
+	<image mode="aspectFill" class="welcome-picture" src="{{base_image_url}}/welcome.jpg" lazy-load/>
+	<view class="restaurant-area">
+		<view class="restaurant-area-row">
+			<navigator class="restaurant-area-item" url="/pages/checkin/forhere">
+				<view class="restaurant-area-item-title">
+					<text class="item-title">餐厅就餐</text>
+					<text class="item-sub-title">签到</text>
+				</view>
+				<image mode="aspectFit" src="../../images/icons/forhere.png"/>
+			</navigator>
+			<navigator class="restaurant-area-item" url="/pages/checkin/bulletin">
+				<view class="restaurant-area-item-title">
+				<text class="item-title">餐厅公告</text>
+				<text class="item-sub-title">餐厅近期公告</text>
+				</view>
+				<image mode="aspectFit" src="../../images/icons/bulletin.png"/>
+			</navigator>
+		</view>
+		<view class="restaurant-area-row">
+			<navigator class="restaurant-area-item" url="/pages/checkin/togo">
+				<view class="restaurant-area-item-title">
+				<text class="item-title">外带打包</text>
+				<text class="item-sub-title">工作人员会为您包好</text>
+				</view>
+				<image mode="aspectFit" src="../../images/icons/togo.png"/>
+			</navigator>
+			<navigator class="restaurant-area-item" url="/pages/checkin/recipe">
+				<view class="restaurant-area-item-title">
+				<text class="item-title">今日食谱</text>
+				<text class="item-sub-title">瞅瞅今天吃啥</text>
+				</view>
+				<image mode="aspectFit" src="../../images/icons/recipe.png"/>
+			</navigator>
+		</view>
+	</view>
+	<view class="welcome">
+		<!--
+		<view class="welcome-body">感谢您的光临！我们致力于为您打造美好的用餐体验，每一道菜品都经过精心挑选的新鲜食材，以确保卫生、搭配精致、营养丰富的口味。我们的厨师团队倾注心血，为您呈现独特的烹饪艺术。</view>-->
+		<view class="welcome-body">今天的菜谱精彩纷呈！午餐时间为上午11:30到1:30，晚餐时间为下午4:30到晚上7:00。鉴于天凉，建议大家尽早就餐，以充分品尝菜品的美妙滋味。若因开会或加班等原因不能餐厅就餐，请点击上方的“外带打包”按钮，我们的工作人员将为您提前打包并保温好饭菜，方便您在合适的时间取走。期待为您呈现美味佳肴，愿您享受愉快的用餐时光！</view>
+	</view>
+	<view class="welcome">
+		<view class="welcome-header">
+			<image mode="aspectFit" src="../../images/svgs/Time_light.svg"/>
+			<text>用餐时间</text>
+		</view>
+		<view class="welcome-body">
+			<text>午：11:30-13:30</text>
+			<text>晚：16:30-19:00</text>
+			<text></text>
+		</view>
+		<!--
+		<view class="welcome-footer">
+			<text>鉴于天凉，建议大家尽早就餐，以充分品尝菜品的美妙滋味。若因开会或加班等原因不能餐厅就餐，清点击下方的“外带打包”按钮，我们的工作人员将为您提前打包并保温好饭菜，方便您在合适的时间取走。期待为您呈现美味佳肴，愿您享受愉快的用餐时光！</text>
+		</view>-->
+	</view>
+	<view class="contactus">
+		<view class="address">
+			<image mode="aspectFit" bind:tap="makePhoneCall" src="../../images/svgs/Pin_alt_light.svg"/>
+			<text>112 3Ave SE, Calgary T2G 0B6</text>
+		</view>
+		<image mode="aspectFit" bind:tap="makePhoneCall" src="../../images/svgs/Phone_light.svg"/>
+	</view>
+</view>

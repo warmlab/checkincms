@@ -1,0 +1,58 @@
+<view class="container">
+	<view class="operation-area">
+	<view class="search-area">
+		<text class="strong">员工姓名</text>
+		<input placeholder="张三" auto-focus bindinput="bindStaffName"/> 
+	</view>
+	<view class="strong">选择公司</view>
+	<checkbox-group class="company-area" bindchange="companiesChange">
+		<label wx:for="{{companies}}" wx:key="id" class="company-item">
+			<checkbox value="{{item.id}}" data-index="{{index}}" color="#841FFD" checked="{{item.checked}}"/>
+			<text>{{item.name}}</text>
+		</label>
+	</checkbox-group>
+	<radio-group class="period-group" bindchange="timePeriodOptionChange">
+		<label class="period-item">
+			<view>
+				<radio value="1" checked="true" color="#841FFD77"/>
+			</view>
+			<text>本周</text>
+		</label>
+		<label class="period-item">
+			<view>
+				<radio value="2" color="#841FFD77"/>
+			</view>
+			<text>上周</text>
+		</label>
+		<label class="period-item">
+			<view>
+				<radio value="3" color="#841FFD77"/>
+			</view>
+			<text>自定义起至日期</text>
+		</label>
+	</radio-group>
+	<view wx:if="{{time_period_option==3}}" class="date-picker-area">
+		<picker mode="date" value="{{begin_date}}" start="2024-02-01" end="2030-02-01" bindchange="bindDateChange" id="begin">
+			<text class="picker">起: {{begin_date}}</text>
+		</picker>
+		<text class="interval">-</text>
+		<picker mode="date" value="{{end_date}}" start="2024-02-01" end="2030-02-01" bindchange="bindDateChange" id="end">
+			<text class="picker">止: {{end_date}}</text>
+		</picker>
+	</view>
+	<button class="btn-row" bind:tap="toGetNotes">查看</button>
+</view>
+<scroll-view class="scrollarea" scroll-y type="list">
+<view class="note-area">
+	<view wx:for="{{notes}}" wx:key="id" class="note-item" data-id="{{item.id}}" bind:tap="navigateToInfo">
+		<view class="note-title">
+			<text>{{item.staff.last_name}}{{item.staff.first_name}}-{{item.staff.company.name}}</text>
+			<text>{{item.occur_time}}</text>
+		</view>
+		<view class="note-content">
+			<text>{{item.content}}</text>
+		</view>
+	</view>
+</view>
+</scroll-view>
+</view>

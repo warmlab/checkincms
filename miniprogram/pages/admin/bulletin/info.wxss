@@ -1,0 +1,53 @@
+.info-area {
+	display:felx;
+	flex-direction: column;
+	width: 100%;
+}
+
+.info-area .view-input {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: .5rem;
+	background-color: white;
+	border-radius: .5rem;
+}
+
+.info-area .view-input input,textarea {
+	display: flex;
+	flex-grow: 1;
+	width: 96%;
+	padding: .5rem;
+	/*border: 0.15rem solid #e5e5e5;*/
+	border-radius: .5rem;
+	/*background-color: white;*/
+}
+
+.view-input .item-label {
+	background-color: #841FFD33;
+	font-weight: bold;
+	padding: .5rem;
+	border-radius: .5rem .5rem 0 0;
+}
+
+.view-input .item-input {
+	margin-bottom: 1rem;
+}
+
+.date-picker-area {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 0.5rem;
+	justify-content: space-between;
+}
+
+.date-picker-area picker {
+	flex-grow: 2;
+	/*border: solid .1rem #afb0b2;*/
+	border-radius: .5rem;
+	padding: .5rem;
+}
+
+.date-picker-area .interval {
+	margin: 0 .5rem;
+}

@@ -1,0 +1,35 @@
+<view class="container">
+	<view class="form-area">
+		<view class="form-field">
+			<view class="form-field-header">食谱名称</view>
+			<input type="text" class="form-field-body" maxlength="120" placeholder="食谱名称(可以不写)" value="{{recipe.name}}" bind:change="onNameChange" />
+		</view>
+		<view class="form-field">
+			<view class="form-field-header">餐点</view>
+			<radio-group class="form-field-body form-field-radio" bindchange="recipeTimeChange">
+        <label>
+					<radio color="#841FFD77" value="2" checked="{{recipe.meal==2}}" /><text>午餐</text>
+        </label>
+        <label>
+					<radio color="#841FFD77" value="4" checked="{{recipe.meal==8}}" /><text>晚餐</text>
+        </label>
+      </radio-group>
+		</view>
+	<view class="list-area">
+		<view wx:for="{{dishes}}" wx:key="id" class="list-item-row" data-id="{{item.id}}" bind:tap="navigateToInfo">
+			<!--
+			<view class="list-item-image" wx:if="{{item.images.length>0}}">
+				<image mode="aspectFit" src="{{base_image_url}}/{{item.images[0].path}}" />
+			</view>-->
+			<block wx:if="{{item.images.length>0}}">
+				<image class="list-item-image" mode="scaleToFill" src="{{base_image_url}}/{{item.images[0].path}}" />
+			</block>
+			<view class="list-item-header">{{item.name}}</view>
+		</view>
+	</view>
+		<view class="form-button-group">
+			<button class="form-button" bind:tap="selectDishes">选择菜品</button>
+			<button class="form-button" bind:tap="saveRecipe">保存</button>
+		</view>
+	</view>
+</view>

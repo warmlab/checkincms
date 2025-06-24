@@ -1,0 +1,216 @@
+/**app.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+	flex-direction: column;
+	color: #2e2e2e;
+}
+
+.container {
+	height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*justify-content: space-between;*/
+  padding: 1rem .6rem;
+	box-sizing: border-box;
+	overflow: scroll;
+	background-color: #eeeeee;
+} 
+
+.welcome-picture {
+	width: 100%;
+	border-radius: .5rem;
+	margin-bottom: 1rem;
+}
+
+.scroll-area {
+	display: flex;
+	flex-grow: 2;
+	overflow-y: scroll;
+}
+
+.strong {
+	font-weight: bold;
+}
+
+.btn-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-grow: inherit;
+	height: 4rem;
+	/* padding: 0 !important; */
+	width: 100% !important;
+	margin-top: 1rem;
+	background-color: #841FFD77;
+	color: white;
+	border-radius: .5rem;
+}
+
+.btn-row-warn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-grow: inherit;
+	height: 4rem;
+	/* padding: 0 !important; */
+	width: 100% !important;
+	margin-top: 1rem;
+	/* background-color: #fa5151 !important;
+	background-color: #ff6060;*/
+	background-color: #ff4927;
+	color: white !important;
+	border-radius: .5rem;
+}
+
+.button-group {
+	display: flex;
+	flex-direction: row;
+}
+
+.button-group button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 2;
+	height: 3rem;
+	/* padding: 0 !important; */
+	background-color: #841FFD !important;
+	color: white;
+}
+
+.button-group button:first-child {
+	border-radius: .5rem 0 0 .5rem;
+}
+
+.button-group button:last-child {
+	border-radius: 0 .5rem .5rem 0;
+}
+
+.divider {
+	width: 100%;
+	height: .2rem;
+	background-color: #841ffd66;
+	margin: 1rem 0;
+}
+
+.form-area {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.form-area .form-field {
+	display: flex;
+	flex-direction: column;
+	border-radius: .5rem;
+	margin-bottom: .5rem;
+}
+
+.form-area .form-field .form-field-header {
+	background-color: #841FFD33;
+	padding: .5rem;
+	border-radius: .5rem .5rem 0 0;
+	font-weight: bold;
+}
+
+.form-area .form-field .form-field-footer {
+	display: flex;
+	justify-content: flex-end;
+	background-color: #f9f9f9;
+	color: #a2a2a2;
+	padding: .5rem;
+	font-size: .8rem;
+	border-radius: 0 0 .5rem .5rem;
+}
+
+.form-area .form-field .form-field-body {
+	background-color: white;
+	padding: .5rem;
+}
+
+.form-area .form-field .form-field-body.body-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.form-area .form-field .form-field-body:last-child {
+	border-radius: 0 0 .5rem .5rem;
+}
+
+.form-area .form-field .form-field-radio {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.form-area .form-field .form-field-radio.radio-wrap {
+	flex-wrap: wrap;
+}
+
+.form-area .form-field .form-field-radio.radio-wrap radio {
+	margin: 0 1rem .5rem 0;
+}
+
+.form-area .form-field .form-field-radio > label {
+	margin-right: 2rem; /* TODO */
+}
+
+/*
+.form-area .form-field .form-field-switch {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.form-area .form-field .form-field-switch:last-child {
+	border-radius: 0 0 .5rem .5rem;
+}
+*/
+
+.form-area > .form-button-group {
+	display: flex;
+	flex-direction: row;
+}
+
+.form-area > .form-button-group > .form-button {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	font-weight: 400;
+	background-color: #841FFD77;
+	border-radius: 0;
+	padding: 1rem .5rem;
+	flex-grow: 2;
+}
+
+.form-area > .form-button-group > .form-button:first-child {
+	border-radius: .5rem 0 0 .5rem;
+}
+
+.form-area > .form-button-group > .form-button:last-child {
+	border-radius: 0 .5rem .5rem 0;
+	border-left: 0;
+}
+
+.form-area > .form-button {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 1rem .5rem;
+	background-color: #841FFD77;
+	border-radius: .5rem;
+	width: 100%;
+}
+
+.form-area .form-field .form-field-body > .form-button {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 1rem .5rem;
+	background-color: #841FFDBB;
+	border-radius: .5rem;
+	width: 100%;
+	color: white;
+}

@@ -1,0 +1,22 @@
+<view class="container">
+	<view class="list-area" wx:if="{{dishes.length>0}}">
+		<view wx:for="{{dishes}}" wx:key="id" class="list-item-column" data-id="{{item.id}}" bind:tap="navigateToInfo">
+			<!--
+			<view class="list-item-image" wx:if="{{item.images.length>0}}">
+				<image mode="aspectFit" src="{{base_image_url}}/{{item.images[0].path}}" />
+			</view>-->
+			<block wx:if="{{item.images.length>0}}">
+				<image class="list-item-image" mode="scaleToFill" src="{{base_image_url}}/{{item.images[0].path}}" />
+			</block>
+			<view class="list-item-header">{{item.name}}</view>
+			<view class="list-item-body">{{item.note}}</view>
+		</view>
+	</view>
+	<view wx:else class="recipe-area">
+		<image mode="aspectFill" src="{{base_image_url}}/prepare.jpg"/>
+		<view class="recipe-summary">
+			<text class="recipe-summary-header">敬请期待美味佳肴的完美融合</text>
+			<text class="recipe-summary-body">厨师们正在全力以赴，精心准备各种美味佳肴，希望为您带来一次难忘的用餐体验。请您静候佳肴烹饪完成的时刻，期待着美味与热情的完美融合。</text>
+		</view>
+	</view>
+</view>

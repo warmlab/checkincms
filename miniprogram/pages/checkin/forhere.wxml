@@ -1,0 +1,31 @@
+<view class="container">
+	<image mode="scaleToFill" class="welcome-picture" src="{{base_image_url}}/slogan/forhere-1.jpg"/>
+	<view class="welcome">
+		<!--
+		<text class="welcome-body">欢迎光临员工餐厅！今天是<text class="strong">{{today}}</text>，午餐用餐时间是<text class="strong">11:30-13:30</text>，晚餐用餐时间是<text class="strong">16:30-19:00</text>，愿您在这里享受美味的餐点，充实的时光，愉快的交流。祝您用餐愉快！</text>-->
+		<text class="welcome-body">感谢您的光临！我们致力于为您打造美好的用餐体验，每一道菜品都经过精心挑选的新鲜食材，以确保卫生、搭配精致、营养丰富的口味。我们的厨师团队倾注心血，为您呈现独特的烹饪艺术。</text>
+	</view>
+	<form class="checkin-area" bindsubmit="toCheckin" wx:if="{{!status.is_checkedin && !status.is_togo}}">
+		<view wx:if="{{!status.reserved && status.can_reserve}}" class="status-area">
+			<view class="status-header">预约下周食材</view>
+			<switch class="status-body" checked="{{status.reserved}}" color="#841ffd77" bindchange="onReservationChange">食材预约截止时间为每周六中午12:00</switch>
+		</view>
+		<view class="note-area">
+			<label for="note" class="note-label">欢迎留言</label>
+			<textarea class="note" name="note" id="note" placeholder="如果您有任何想分享的建议或对我们的服务有疑虑，欢迎在留言框中分享，我们将积极倾听并迅速做出改进。感谢您的选择，让我们携手打造更加令人满意的用餐时光。" rows="3" maxlength="1024"></textarea>
+		</view>
+		<button form-type="submit" class="btn-row">今日签到</button>
+	</form>
+	<view class="status-area" wx:elif="{{status.is_checkedin && !status.is_togo}}">
+		<view class="status-header">您已经签到</view>
+		<text class="status-body">非常感谢您的签到！我们希望您能够享受您在这里的用餐体验。如果您需要任何帮助或有任何问题，请随时联系我们的工作人员。祝您用餐愉快！</text>
+	</view>
+	<view class="status-area" wx:elif="{{status.is_togo}}">
+		<view class="status-header">您已经预约打包</view>
+		<text class="status-body">非常抱歉，由于您已经预约了打包服务，因此我们无法为您提供堂食签到服务。如果您有其他需求或者需要更多帮助，请随时联系我们的客服团队。感谢您的理解。</text>
+	</view>
+	<view wx:else>
+		<view class="status-header">您已经签到或预约打包</view>
+		<text class="status-body">非常抱歉，由于您已经签到或预约了打包服务，我们无法再为您提供额外的服务。如果您有任何其他需求或疑问，请随时与我们联系，我们将竭诚为您服务。感谢您的理解。</text>
+	</view>
+</view>

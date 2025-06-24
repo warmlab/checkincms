@@ -1,0 +1,68 @@
+{
+  "pages": [
+		"pages/index/index",
+		"pages/checkin/forhere",
+		"pages/checkin/togo",
+		"pages/checkin/bulletin",
+		"pages/checkin/recipe",
+		"pages/ingredient/index",
+		"pages/my/index",
+		"pages/my/info",
+		"pages/my/records/checkin",
+		"pages/my/records/ingredient",
+		"pages/admin/staff/index",
+		"pages/admin/bulletin/index",
+		"pages/admin/bulletin/info",
+		"pages/admin/company/index",
+		"pages/admin/company/info",
+		"pages/admin/statistics/togo",
+		"pages/admin/statistics/checkin",
+		"pages/admin/statistics/reservation",
+		"pages/admin/statistics/recipe",
+		"pages/admin/note/index",
+		"pages/admin/recipe/index",
+		"pages/admin/recipe/dish",
+		"pages/admin/recipe/dish_selector",
+		"pages/logs/logs"
+	],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "餐厅",
+    "navigationBarBackgroundColor": "#eeeeee"
+	},
+	"tabBar": {
+    "backgroundColor": "#eeeeee",
+    "borderStyle": "black",
+    "selectedColor": "#841FFD",
+    "color": "#2e2e2e",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tabbar/Shop@3x.png",
+        "selectedIconPath": "images/tabbar/Shop_fill@3x.png",
+				"text": "首页"
+      },
+      {
+        "pagePath": "pages/ingredient/index",
+        "iconPath": "images/tabbar/Ingredient@3x.png",
+        "selectedIconPath": "images/tabbar/Ingredient_fill@3x.png",
+				"text": "食材预约领取"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "images/tabbar/User@3x.png",
+        "selectedIconPath": "images/tabbar/User_fill@3x.png",
+        "text": "我"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 60000,
+    "downloadFile": 50000
+	},
+  "style": "v2",
+	"darkmode": false,
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

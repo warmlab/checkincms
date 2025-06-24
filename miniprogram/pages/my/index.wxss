@@ -1,0 +1,105 @@
+.profile-info {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	background: #841FFD;
+	padding: 3rem 0;
+	overflow: hidden;
+}
+
+.profile-info .avatar {
+	height: 5rem;
+	width: 5rem;
+	border-radius: 50%;
+	margin-left: 2rem;
+}
+
+.profile-info .info {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: #ffffff00;
+	flex-grow: 2;
+}
+
+.profile-info .info .name {
+	color: white;
+	margin-left: 1rem;
+	font-size: 1.5rem;
+	flex-grow: 2;
+}
+
+.profile-info .info button {
+	display: flex;
+	align-items: center;
+	background-color: #ffffff00;
+}
+
+.profile-info .info button image {
+	height: 2rem;
+	width: 2rem;
+}
+
+.menu-title {
+	display: flex;
+	margin: .5rem 0.5rem 0;
+	padding: .5rem 0;
+}
+
+.reminder {
+	display: flex;
+	flex-direction: column;
+	margin: 0.5rem;
+	background: #FFAA04AA;
+	border-radius: .5rem;
+	padding: .5rem;
+}
+
+.reminder .reminder-item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: .5rem 0;
+}
+
+.reminder .reminder-item .reminder-item-btn {
+	background-color: #841FFD;
+	color: white;
+	flex-grow: 2;
+	margin-left: .5rem;
+}
+
+.user-menu {
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	color: #9b9b9b;
+	background: #ffffff;
+	padding: 0 .5rem .5rem;
+	font-size: 24rpx;
+	/*border-bottom: 1rpx solid #9b9b9b;*/
+}
+
+.item {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/*border: 1rpx solid #841FFD;*/
+	background-color: #841FFD;
+	padding: 30rpx 0;
+	margin-right: 20rpx;
+	border-radius: 8rpx;
+}
+
+.item:last-child {
+	margin-right: 0;
+}
+
+.item .title {
+	font-size: 24rpx;
+	/*color: #23120D; */
+	color: white;
+}

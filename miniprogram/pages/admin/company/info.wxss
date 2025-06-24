@@ -1,0 +1,18 @@
+.info-area {
+	display:felx;
+	flex-direction: column;
+	margin: .5rem;
+}
+
+.info-area .view-input {
+	display: flex;
+	flex-direction: column;
+}
+
+.view-input .item-label {
+	margin-bottom: .5rem;
+}
+
+.view-input .item-input {
+	margin-bottom: 1rem;
+}

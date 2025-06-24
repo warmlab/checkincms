@@ -1,0 +1,37 @@
+.time-period-area {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.time-period-selector {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    /*justify-content: space-between;*/
+}
+
+.time-period-selector div {
+    margin-right: 1rem;
+}
+
+.summary {
+    display: flex;
+    flex-direction: column;
+}
+
+.summary div {
+    display: flex;
+    flex-direction: row;
+}
+
+.summary div label {
+    display: flex;
+    align-items: center;
+    width: 12rem;
+    font-weight: bold;
+}
+
+.summary div text {
+    font-size: 1.2rem;
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="35"
+   height="35"
+   viewBox="0 0 35 35"
+   fill="none"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="complete3.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="6.7428571"
+     inkscape:cx="17.5"
+     inkscape:cy="17.5"
+     inkscape:window-width="1312"
+     inkscape:window-height="449"
+     inkscape:window-x="302"
+     inkscape:window-y="274"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg4" />
+  <rect
+     width="35"
+     height="35"
+     rx="11.25"
+     fill="#00CD2D"
+     fill-opacity="0.8"
+     id="rect1"
+     style="fill:#841ffd;fill-opacity:0.80000001" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M15.25 19.75L24.25 10.75L26.5 13L17.5 22L15.25 19.75ZM13 22L15.25 19.75L10.75 15.25L8.5 17.5L13 22Z"
+     fill="white"
+     id="path1" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M15.25 19.75L24.25 10.75L26.5 13L17.5 22L15.25 19.75ZM13 22L15.25 19.75L10.75 15.25L8.5 17.5L13 22Z"
+     fill="#00CD2D"
+     fill-opacity="0.1"
+     id="path2" />
+  <path
+     d="M13 22L15.25 24.25L17.5 22L15.25 19.75L13 22Z"
+     fill="white"
+     id="path3" />
+  <path
+     d="M13 22L15.25 24.25L17.5 22L15.25 19.75L13 22Z"
+     fill="#00CD2D"
+     fill-opacity="0.1"
+     id="path4" />
+</svg>

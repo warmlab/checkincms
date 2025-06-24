@@ -1,0 +1,231 @@
+/*
+.title {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	margin-bottom: .5rem;
+}
+
+.title .name {
+	color: #2e2e2e;
+}
+
+.week {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.week .day {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+}
+
+.week .day.checkedin {
+	background-color: #841FFD;
+	color: white;
+}
+
+.week .day.notcheckedin {
+	background-color: white;
+	border: 0.15rem solid #c2c2c2;
+	background-color: #c2c2c2;
+}
+
+.week .day.checkingin {
+	animation-duration: 3s;
+	animation-name: color_fade;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	background-color: white;
+	border: 0.15rem solid #c2c2c2;
+	background-color: #c2c2c2;
+}
+
+@keyframes color_fade {
+  to {
+		background-color: #2e2e2e;
+		color: #c2c2c2;
+  }
+
+  from {
+		background-color: #c2c2c2;
+		color: #2e2e2e;
+  }
+}
+
+.week .day.waitingcheckedin {
+	background-color: #2e2e2e;
+	color: white;
+}*/
+.welcome {
+	background-color: white;
+	border-radius: .5rem;
+	padding: .5rem;
+}
+
+.welcome image {
+	width: 100%;
+	border-radius: 1rem;
+}
+
+.welcome .date {
+	display: flex;
+	margin-top: 1rem;
+	font-size: 1.1rem;
+	/*padding: 1rem 0;
+	justify-content: center;
+	background-color: #841FFD;*/
+}
+
+.checkin-area {
+	display: flex;
+	flex-direction: column;
+	margin-top: .5rem;
+	width: 100%;
+}
+
+.status-area {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	margin: .5rem 0;
+	border-radius: .5rem;
+	width: 100%;
+}
+
+.status-area .status-header {
+	font-weight: bold;
+	background-color: #841FFD33;
+	padding: .5rem;
+	border-radius: .5rem .5rem 0 0;
+}
+.status-area .status-body {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	flex-grow: 2;	
+	padding: .5rem;
+	border-radius: 0 0 .5rem .5rem;
+}
+
+.note-area {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	border-radius: .5rem;
+	width: 100%;
+}
+
+.note-area .note-label {
+	padding: .5rem;
+	background-color: #841FFD33;
+	font-weight: bold;
+	border-radius: .5rem .5rem 0 0;
+}
+
+.note-area .note {
+	width: 96%;
+	height: 12vh;
+	/*border: 0.15rem solid #eeeeee;*/
+	border-radius: .5rem;
+	padding: .5rem;
+	overflow: hidden;
+}
+
+/*
+.note-area {
+	display: flex;
+	flex-direction: column;
+}
+
+.note-area .note-label {
+	font-weight: 500;
+	margin-bottom: .5rem;
+}
+
+.note-area .note {
+	width: 96%;
+	border: 0.15rem solid #d5d5d5;
+	border-radius: .5rem;
+	padding: 2%;
+}*/
+
+/* the followings are for records page */
+.record-area {
+	display: flex;
+	flex-direction: column;
+}
+
+.record-area .record-item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	/*justify-content: space-between;*/
+	border-radius: 1rem;
+	padding: 1rem 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.record-area .record-item span {
+	padding-left: 0.5rem;
+	flex-grow:2;
+}
+
+.record-area .record-item.checkedin {
+	background-color: #00cd2d1a;
+	/*background: linear-gradient(0deg, rgba(0, 205, 45, 0.1), rgba(0, 205, 45, 0.1)), #FFFFFF; */
+	color: #176b2a;
+}
+
+.record-area .record-item.notcheckedin {
+	background-color: #35383E1A;
+	color: #35383e;
+}
+
+.record-area .record-item.tocheckin {
+	background-color: #FFAA041A;
+	color: #805d19;
+}
+
+.record-area .record-item.notcheckedin .btn-backdate {
+	background-color: #ffb931;
+	color: white;
+	padding: .5rem .5rem;
+}
+
+.status-area {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	margin: .5rem 0;
+	border-radius: .5rem;
+}
+
+.status-area .status-header {
+	font-weight: bold;
+	background-color: #841FFD33;
+	padding: .5rem;
+	border-radius: .5rem .5rem 0 0;
+}
+.status-area .status-body {
+	display: flex;
+	flex-direction: row;
+	flex-grow: 2;	
+	padding: .5rem;
+	border-radius: 0 0 .5rem .5rem;
+}
+
+.status-area .status-button {
+	width: 100%;
+	background-color: #841FFD77;
+	padding: 1rem 0;
+	border-radius: .5rem;
+}

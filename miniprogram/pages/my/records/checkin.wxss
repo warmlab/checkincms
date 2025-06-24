@@ -1,0 +1,97 @@
+.period-group {
+	display: flex;
+	flex-direction: row;
+	padding-bottom: .5rem;
+	width: 100%;
+}
+
+.period-group .period-item {
+	display: flex;
+	flex-direction: row;
+	margin-right: 1rem;
+}
+
+.date-picker-area {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 0 .5rem 1rem .5rem;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.date-picker-area picker {
+	flex-grow: 2;
+	border: solid .1rem #afb0b2;
+	border-radius: .5rem;
+	padding: .5rem;
+	background-color: white;
+}
+
+.date-picker-area .interval {
+	margin: 0 .5rem;
+}
+
+.record-area {
+	display: flex;
+	flex-direction: column;
+}
+
+.record-area .record-item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	/*justify-content: space-between;*/
+	border-radius: 1rem;
+	padding: 0 .5rem;
+	margin-bottom: 0.5rem;
+	height: 4rem;
+	border: solid .1rem white;
+}
+
+.record-area .record-item image {
+	width: 3rem;
+}
+
+.record-area .record-item span {
+	padding-left: 0.5rem;
+	flex-grow:2;
+}
+
+.record-area .record-item button {
+	background-color: #35383E00;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.record-area .record-item button text {
+	color: #9ea2a3;
+	font-weight: lighter;
+}
+
+.record-area .record-item button image {
+	height: 1.5rem;
+}
+
+.record-area .record-item.checkedin {
+	background-color: #00cd2d1a;
+	/*background: linear-gradient(0deg, rgba(0, 205, 45, 0.1), rgba(0, 205, 45, 0.1)), #FFFFFF; */
+	color: #176b2a;
+}
+
+.record-area .record-item.notcheckedin {
+	background-color: #35383E1A;
+	color: #35383E;
+}
+
+.record-area .record-item.tocheckin {
+	background-color: #FFAA041A;
+	color: #805d19;
+}
+
+.record-area .record-item.notcheckedin .btn-backdate {
+	/*background-color: #ffb931;*/
+	color: white;
+	padding: .5rem 0;
+}

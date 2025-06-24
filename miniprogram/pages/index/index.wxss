@@ -1,0 +1,118 @@
+.home-container {
+	padding: .5rem .5rem 2rem .5rem;
+	background-color: #eeeeee;
+	height: 120vh;
+}
+
+.restaurant-area {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.restaurant-area-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.restaurant-area-item {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: white;
+	padding: .5rem;
+	margin-bottom: .5rem;
+	border-radius: .5rem;
+	box-shadow: .2rem .2rem .2rem #841ffd33;
+	flex-grow: 2;
+	width: 45%;
+}
+
+.restaurant-area-item:first-child {
+	margin-right: .5rem;
+}
+
+.restaurant-area-item-title {
+	display: flex;
+	flex-direction: column;
+}
+
+.restaurant-area-item image {
+	width: 2.5rem;
+	height: 2.5rem;
+	align-self: center;
+}
+
+.item-title {
+	font-size: 1.1rem;
+	font-weight: bold;
+	margin-bottom: .5rem;
+}
+
+.item-sub-title {
+	color: #c2c2c2;
+	font-size: .8rem;
+}
+
+.welcome {
+	font-size: 1rem;
+	background-color: white;
+	/*padding: .5rem;*/
+	border-radius: .5rem;
+	box-shadow: .2rem .2rem .2rem #841ffd33;
+	margin-bottom: .5rem;
+	width: 100%;
+}
+
+.welcome-header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-weight: bold;
+	background-color: #841FFD33;
+	border-radius: .5rem .5rem 0 0;
+	padding: .5rem;
+}
+
+.welcome-header image {
+	width: 2rem;
+	height: 2rem;
+	margin-right: .5rem;
+}
+
+.welcome-body {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: .5rem;
+}
+
+.welcome-footer{
+	font-size: .8rem;
+	color: #a2a2a2;
+	padding: 0 .5rem .5rem;
+}
+
+.contactus {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 1rem;
+	width: 100%;
+}
+
+.contactus .address {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.contactus .address text {
+	margin-left: .5rem;
+}
+
+.contactus image {
+	width: 1.5rem;
+	height: 1.5rem;
+}

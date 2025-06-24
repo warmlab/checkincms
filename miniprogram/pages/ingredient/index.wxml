@@ -1,0 +1,30 @@
+<view class="container">
+	<view class="ingredient-note">
+		<text>通过每周发放食材，我们能够确保大家获得充足的早餐营养。这不仅有助于提高大家的健康水平，还能增加工作日的活力和效率。此外，这种做法也鼓励了家庭烹饪的文化。</text>
+		<text>在周末时，大家可以一起动手准备美味的餐点，享受居家烹饪的乐趣。这不仅可以增强家庭成员之间的情感联系，还能培养厨艺和创造力。</text>
+		<text>因此，通过这种方式，我们不仅关注了食物的营养健康，也营造了一个更加温馨和有趣的生活氛围。</text>
+	</view>
+	<view class="form-area">
+		<view class="form-field">
+			<view class="form-field-header">领取本周食材</view>
+			<view class="form-field-body">
+				<button class="form-button" bind:tap="toPickupReservation" wx:if="{{reservation.last_week.reserved&&!reservation.last_week.pickedup}}">领取</button>
+				<text wx:elif="{{!!reservation.last_week.pickedup}}">非常感谢您！您已经领取了本周的食材。请尽快食用哦！</text>
+				<text wx:else>非常抱歉，您似乎没有预订本周的食材。</text>
+			</view>
+		</view>
+		<view class="form-field">
+			<view class="form-field-header">预约下周食材</view>
+			<view class="form-field-body">
+				<button class="form-button" bind:tap="toMakeReservation" wx:if="{{!reservation.this_week.reserved && reservation.can_reserve}}">预约</button>
+				<text wx:elif="{{!reservation.this_week.reserved && !reservation.can_reserve}}">非常抱歉，看来您错过了预订食材的时间窗口。</text>
+				<view wx:else>
+				<text>非常感谢您！您已成功预约了下周的食材。请务必记得按时领取哦！如果您的计划有变，无法领取下周的食材，也可以点击下方的取消预约。</text>
+				</view>
+				<button class="btn-row-warn" bind:tap="toCancelReservation" wx:if="{{reservation.this_week.reserved && reservation.can_reserve}}">取消预约</button>
+			</view>
+			<!--<switch checked="{{reservation}}" color="#841FFD77" bindchange="onReservationChange">预约下周食材</switch>-->
+			<view class="form-field-footer">食材预约截止时间为每周六中午12:00</view>
+		</view>
+	</view>
+</view>

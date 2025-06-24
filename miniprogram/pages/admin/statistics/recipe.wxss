@@ -1,0 +1,96 @@
+.operation-area {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.period-group {
+	display: flex;
+	flex-direction: row;
+	padding: .5rem 0;
+}
+
+.period-group .period-item {
+	display: flex;
+	flex-direction: row;
+	margin-right: 1rem;
+}
+
+.date-picker-area {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 0.5rem;
+	justify-content: space-between;
+}
+
+.date-picker-area picker {
+	flex-grow: 2;
+	border: solid .1rem #afb0b2;
+	border-radius: .5rem;
+	padding: .5rem;
+	background-color: white;
+}
+
+.date-picker-area .interval {
+	margin: 0 .5rem;
+}
+
+.recipe-area {
+	display: flex;
+	flex-direction: column;
+}
+
+.recipe-area .recipe-item {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	margin-bottom: .5rem;
+	border-radius: .5rem;
+	padding-bottom: .15rem;
+}
+
+.recipe-area .recipe-item .recipe-info {
+	display: flex;
+	flex-direction: row;
+	background-color: #841ffd33;
+	align-items: center;
+	border-radius: .5rem .5rem 0 0;
+}
+
+.recipe-area .recipe-item .recipe-info .recipe-time {
+	padding: .5rem;
+	font-weight: bold;
+	margin-right: .5rem;
+}
+
+.recipe-area .recipe-item .recipe-info .recipe-detail {
+	margin-right: .5rem;
+}
+
+.recipe-area .recipe-item .dish-area {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.recipe-area .recipe-item .dish-area .dish-info {
+	display: flex;
+	flex-direction: column;
+	background-color: #e9e9e9;
+	margin: .15rem 0 0 .15rem;
+	border-radius: .25rem;
+}
+
+.recipe-area .recipe-item .dish-area .dish-info .dish-image {
+	margin: .1rem;
+	/*width: 7rem;
+	height: 4.3rem;*/
+	border-radius: .2rem .2rem 0 0;
+}
+
+.recipe-area .recipe-item .dish-area .dish-info .dish-name {
+	font-size: .9rem;
+	padding: .2rem;
+	border-radius: 0 0 .2rem .2rem;
+}

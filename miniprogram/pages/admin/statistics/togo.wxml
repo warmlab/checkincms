@@ -1,0 +1,24 @@
+<view class="container">
+	<view class="list-area">
+		<block wx:for="{{records}}" wx:key="id">
+		<!--reserved-->
+		<view wx:if="{{item.togo_status == 1}}" class="list-item-row reserved" data-id="{{item.id}}" bind:tap="navigateToInfo">
+			<view class="list-item-header">{{item.staff.last_name}}{{item.staff.first_name}}</view>
+			<view class="" data-id="{{item.id}}" data-index="{{index}}" bind:tap="statusChange">待打包</view>
+		</view>
+		<!--prepared-->
+		<view wx:elif="{{item.togo_status == 3}}" class="list-item-row prepared" data-id="{{item.id}}" bind:tap="navigateToInfo">
+			<view class="list-item-header">{{item.staff.last_name}}{{item.staff.first_name}}</view>
+			<view class="" data-id="{{item.id}}" data-index="{{index}}" bind:tap="statusChange">待取货</view>
+		</view>
+		<!--finished-->
+		<view wx:elif="{{item.togo_status == 7}}" class="list-item-row finished" data-id="{{item.id}}" bind:tap="navigateToInfo">
+			<view class="list-item-header">{{item.staff.last_name}}{{item.staff.first_name}}</view>
+			<view class="">已取货</view>
+		</view>
+		<view wx:else class="list-item-row nosense" data-id="{{item.id}}" bind:tap="navigateToInfo">
+			<view class="list-item-header">{{item.staff.last_name}}{{item.staff.first_name}}</view>
+		</view>
+		</block>
+	</view>
+</view>

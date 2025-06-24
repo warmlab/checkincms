@@ -1,0 +1,10 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="container">
+	<block wx:for="{{bulletins}}" wx:key="id">
+	<view class="bulletin">
+		<view class="bulletin-header">{{item.title}}</view>
+		<text class="bulletin-body">{{item.content}}</text>
+		<view class="bulletin-footer">{{filter.format_date(item.update_time)}}</view>
+	</view>
+	</block>
+</view>

@@ -1,0 +1,20 @@
+<view class="container">
+	<view class="form-area">
+		<view class="form-button-group">
+			<button class="form-button" bind:tap="confirmDishes">确定</button>
+			<button class="form-button" bind:tap="toCreateDish">新建</button>
+		</view>
+	</view>
+	<scroll-view class="company-area">
+	<checkbox-group bindchange="dishesChange">
+		<view wx:for="{{dishes}}" wx:key="id" class="company-item" url="dish?id={{item.id}}">
+			<checkbox value="{{item.id}}" color="#841FFD" checked="{{item.checked}}"/>
+		<navigator class="item-detail" url="dish?id={{item.id}}">
+			<text wx:if="{{item.index>0}}" class="company-index">{{item.index}}</text>
+			<text class="company-name">{{item.name}}</text>
+			<image mode="aspectFit" src="../../../images/svgs/right_black.svg" />
+		</navigator>
+		</view>
+	</checkbox-group>
+	</scroll-view>
+</view>

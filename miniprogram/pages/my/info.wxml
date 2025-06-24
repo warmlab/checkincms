@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <form bindsubmit="toSignupStaff" class="form-area">
+			<button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+				<image class="avatar" src="{{avatar_url}}"></image>
+			</button>
+			<view class="form-field">
+				<view class="form-field-header">您的昵称</view>
+				<input type="nickname" class="form-field-body" name="nickname" maxlength="128" placeholder="昵称" value="{{staff.nickname}}" bind:change="onInputChange" />
+			</view>
+			<view class="form-field">
+				<view class="form-field-header">您的姓名</view>
+				<view class="form-field-body body-row">
+				<input type="text" class="nickname-input" name="last_name" maxlength="64" placeholder="姓氏" focus="true" value="{{staff.last_name}}" bind:change="onInputChange" />
+				<input type="text" class="nickname-input" name="first_name" maxlength="64" placeholder="名字" value="{{staff.first_name}}" bind:change="onInputChange" />
+				</view>
+			</view>
+			<view class="form-field">
+				<view class="form-field-header">您的公司</view>
+				<radio-group class="form-field-body form-field-radio radio-wrap" bindchange="companySelect">
+					<block class="radio-item" wx:for="{{companies}}" wx:key="id">
+							<radio value="{{item.id}}" color="#841FFD77" checked="{{item.id==company_id}}">{{item.name}}</radio>
+					</block>
+				</radio-group>
+			</view>
+			<view class="form-field">
+				<view class="form-field-header">您的电子邮箱</view>
+				<input type="text" class="form-field-body" name="email" maxlength="120" placeholder="name@example.com" value="{{staff.email}}" bind:change="onInputChange" />
+			</view>
+			<view class="form-field">
+				<text class="form-field-header">您的电话号码</text>
+				<input type="digit" class="form-field-body" maxlength="12" name="phone" placeholder="403-123-4567" value="{{staff.phone}}" bind:change="onInputChange" />
+			</view>
+			<button formType="submit" class="btn-row">提交</button>
+    </form>
+  </view>
+</scroll-view>

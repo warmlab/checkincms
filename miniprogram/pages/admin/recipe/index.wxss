@@ -1,0 +1,58 @@
+.list-area {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.list-area .list-item-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background-color: white;
+	padding: .5rem;
+	margin-bottom: .5rem;
+	border-radius: .5rem;
+}
+
+.list-area .list-item-row .list-item-image {
+	width: 5rem;
+	height: 3.09rem;
+	border-radius: .5rem;
+}
+
+.list-area .list-item-column {
+	display: flex;
+	flex-direction: column;
+	border-radius: .5rem;
+
+	margin-bottom: .5rem;
+}
+
+.list-area .list-item-column .list-item-header {
+	background-color: #841FFD33;
+	font-weight: bold;
+	font-size: 1.1rem;
+	/*border-radius: .5rem .5rem 0 0; */
+	padding: .5rem;
+	overflow: hidden;
+}
+
+.list-area .list-item-column .list-item-header:first-child {
+	border-radius: .5rem .5rem 0 0;
+}
+
+.list-area .list-item-column .list-item-body {
+	padding: .5rem;
+	background-color: white;
+	border-radius: 0 0 .5rem .5rem;
+}
+
+.list-area .list-item-column .list-item-image {
+	/*display: flex; */
+	background-color: white;
+	border-radius: .5rem .5rem 0 0;
+	width: 100%;
+	/*padding: .5rem;*/
+}
+

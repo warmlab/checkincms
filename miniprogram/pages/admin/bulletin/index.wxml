@@ -1,0 +1,14 @@
+<scroll-view class="scrollarea" scroll-y type="list">
+<view class="company-area">
+	<view class="title-area">
+		<text class="title-name">我们的公告</text>
+		<button class="title-btn" data-id="0" bind:tap="navigateToInfo"><text>新建</text>
+			<image mode="aspectFit" src="../../../images/svgs/right_white.svg" />
+		</button>
+	</view>
+	<view wx:for="{{bulletins}}" wx:key="id" class="company-item" data-id="{{item.id}}" bind:tap="navigateToInfo">
+		<text class="company-name">{{item.title}}</text>
+		<image mode="aspectFit" src="../../../images/svgs/right.svg" />
+	</view>
+</view>
+</scroll-view>

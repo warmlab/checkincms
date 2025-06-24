@@ -1,0 +1,19 @@
+var format_date = function(date_str, format="%y-%m-%d") {
+	if (date_str == undefined || date_str == null || date_str.trim() == "") {
+		return "";
+	}
+
+	var date = getDate(date_str);
+
+  //const year = date.getFullYear()
+  var month = date.getMonth() + 1
+	var day = date.getDate()
+	//const weekday = date.getDay()
+
+	return '' + month + '月' + day + '日'
+	//return `${month}月${day}日`
+}
+
+module.exports = {
+	format_date: format_date
+}

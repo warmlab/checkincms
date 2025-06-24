@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/checkin.css')}}">
+  </head>
+  <body>
+    <section class="congratulations">
+      <img class="img-fluid rounded" src="{{url_for('media', filename='effort.jpg')}}">
+      <section class="date rounded-pill">感谢您的认真签到！您的出勤和努力是我们团队成功的关键。继续保持这份热情和努力，共同创造更美好的工作环境和成绩。谢谢您的辛勤付出，我们一同前行！</section>
+    </section>
+    <section><a class="btn btn-customer" href="/myrecords">查看我的签到记录</a></section>
+  </body>
+</html>
