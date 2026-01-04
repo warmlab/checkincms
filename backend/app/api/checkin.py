@@ -239,7 +239,7 @@ def reservation_latest():
 
     return jsonify(reservation_status(staff.id)), 200
 
-def reservation_status(staff_id):
+def reservation_status2(staff_id):
     last_week_days = get_week_days(-1)
     this_week_days = get_week_days()
     result = {}
@@ -261,13 +261,38 @@ def reservation_status(staff_id):
         result['this_week'] = {'reserved': False}
 
     today = datetime.today()
-    if (today.weekday() == 5 and today.hour >=12) or\
+    if (today.weekday() == 5 and today.hour >= 12) or\
         today.weekday() > 5: # 食材预约截止时间为每周六中午12:00
         result['can_reserve'] = False
     else:
         result['can_reserve'] = True
 
     return result
+
+
+def reservation_status(staff_id):
+    this_week_days = get_week_days()
+    result = {}
+
+    this_week_reservation = Reservation.query.filter(Reservation.staff_id==staff_id, Reservation.occur_time.cast(Date) >= this_week_days[0], Reservation.occur_time.cast(Date) <= this_week_days[-1]).first()
+    if this_week_reservation:
+        result['this_week'] = {'reserved': True,  'time': this_week_reservation.occur_time.date()}
+        if this_week_reservation.pickup_time:
+            result['this_week']['pickedup'] = True
+            result['this_week']['pickedup_time'] = this_week_reservation.pickup_time
+        else:
+            result['this_week']['pickedup'] = False
+    else:
+        result['this_week'] = {'reserved': False}
+
+    today = datetime.today()
+    if (today.weekday() == 2 and today.hour >= 8) or today.weekday() > 2: # 食材预约截止时间为每周三上午8:00
+        result['can_reserve'] = False
+    else:
+        result['can_reserve'] = True
+
+    return result
+    
 
 @api.route('/reservation/new', methods=['POST'])
 @login_required

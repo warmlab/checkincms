@@ -18,10 +18,10 @@
 			</navigator>
 		</view>
 		<view class="restaurant-area-row">
-			<navigator class="restaurant-area-item" url="/pages/checkin/togo">
+			<navigator class="restaurant-area-item" url="/pages/ingredient/index">
 				<view class="restaurant-area-item-title">
-				<text class="item-title">外带打包</text>
-				<text class="item-sub-title">工作人员会为您包好</text>
+				<text class="item-title">周末食材</text>
+				<text class="item-sub-title">点击预约领取</text>
 				</view>
 				<image mode="aspectFit" src="../../images/icons/togo.png"/>
 			</navigator>

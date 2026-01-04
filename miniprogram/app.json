@@ -1,11 +1,11 @@
 {
   "pages": [
 		"pages/index/index",
+		"pages/ingredient/index",
 		"pages/checkin/forhere",
 		"pages/checkin/togo",
 		"pages/checkin/bulletin",
 		"pages/checkin/recipe",
-		"pages/ingredient/index",
 		"pages/my/index",
 		"pages/my/info",
 		"pages/my/records/checkin",

@@ -24,7 +24,7 @@ App({
 		return new Promise((resolve, reject) => {
 			//var interval = setInterval(function () {
 				//var userInfo = wx.getStorageSync("appUserInfo");
-				if (!!userInfo) {
+				if (typeof userInfo !== "undefined" && !!userInfo) {
 					//clearInterval(interval);
 					if (!userInfo.access_token || userInfo.expire_time <= new Date().getTime()) {
 						that.login().then((userInfo) => {

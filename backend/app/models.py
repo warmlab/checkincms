@@ -202,12 +202,35 @@ class Stocking(db.Model):
     ingredient = db.relationship('Ingredient', back_populates='stocks')
     staff = db.relationship('Staff', back_populates='stocks')
 
+
+class Combo(db.Model): # 套餐
+    __tablename__ = 'combo'
+    _include_column_ = ['id', 'name', 'note']
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    note = db.Column(db.Text)
+
+    def __repr__(self) -> str:
+        return self.name
+    
+class ComboIngredient(db.Model):
+    __tablename__ = 'combo_ingredient'
+    combo_id = db.Column(db.Integer, db.ForeignKey('combo.id'), primary_key=True)
+    ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredient.id'), primary_key=True)
+    index = db.Column(db.Integer, default=1) # 显示的顺序
+
+    combo = db.relationship('Combo',
+                         backref=db.backref('ingredients', lazy="dynamic"))
+    ingredient = db.relationship('Ingredient',
+                         backref=db.backref('combos', lazy="dynamic"))
+
 class Reservation(db.Model):
     __tablename__ = 'reservation'
     _include_column_ = ['reservation', 'occur_time', 'pickup_time']
 
     id = db.Column(db.Integer, primary_key=True)
     staff_id = db.Column(db.Integer, db.ForeignKey('staff.id'))
+    combo_id = db.Column(db.Integer, db.ForeignKey('combo.id'), nullable=True)
     reservation = db.Column(db.SmallInteger, default=0)
     occur_time = db.Column(db.DateTime, default=datetime.now)
     pickup_time = db.Column(db.DateTime, default=None)
@@ -216,6 +239,9 @@ class Reservation(db.Model):
     #cancelled_time = db.Column(db.DateTime, default=None)
 
     staff = db.relationship('Staff',
+                         backref=db.backref('reservations', lazy="dynamic"))
+
+    combo = db.relationship('Combo',
                          backref=db.backref('reservations', lazy="dynamic"))
 
 class CheckInHistory(db.Model):

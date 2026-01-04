@@ -6,3 +6,25 @@
 	margin-bottom: .5rem;
 	border-radius: .5rem;
 }
+
+.combo-group {
+	display: flex;
+	flex-direction: column;
+	padding: .5rem 0;
+}
+
+.combo-group .combo-item {
+	display: flex;
+	flex-direction: row;
+	margin: 1rem;
+}
+
+.form-area .form-field .form-field-body .info {
+	padding: .5rem 0;
+	margin: .5rem 0;
+}
+
+.form-area .form-field .form-field-body .warning {
+	padding: .5rem 0;
+	margin: .5rem 0;
+}
