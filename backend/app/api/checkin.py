@@ -6,10 +6,11 @@ from sqlalchemy.types import Date
 
 from ..models import MEAL_LUNCH, MEAL_SUPPER, MEAL_AFTERWARDS
 from ..models import TOGO_RESERVED, TOGO_PREPARED, TOGO_TAKEN_OUT
-from ..models import db, TOGO_RESERVED, Reservation, CheckInHistory, Bulletin, StaffNote
+from ..models import db, TOGO_RESERVED, Reservation, CheckInHistory, Bulletin, StaffNote, Combo
 
 from ..utils import get_week_days
 from ..myrequest import get_staff
+from ..status import STATUS_COMBO_ID_INVALID
 from ..status import STATUS_TOGO_ID_INVALID, STATUS_TOGO_STATUS_INVALID
 from ..status import STATUS_NOT_RESERVED, STATUS_CHECKIN_TIME_INVALID, MESSAGES
 
@@ -192,9 +193,9 @@ def checkin_action():
     db.session.commit()
 
     # 处理预约食材
-    reservation = request.json.get('reservation')
-    if reservation:
-        make_reservation(staff.id)
+    #reservation = request.json.get('reservation')
+    #if reservation:
+    #    make_reservation(staff.id)
 
     #return jsonify(history=history.to_json(), checkin_time_index=checkin_time.weekday(), reservation=reserved), 201
     #return jsonify(history=history.to_json()), 201
@@ -282,6 +283,7 @@ def reservation_status(staff_id):
             result['this_week']['pickedup_time'] = this_week_reservation.pickup_time
         else:
             result['this_week']['pickedup'] = False
+            result['this_week']['combo'] = this_week_reservation.combo.to_json()
     else:
         result['this_week'] = {'reserved': False}
 
@@ -299,9 +301,17 @@ def reservation_status(staff_id):
 def new_reservation():
     staff = get_staff(request.headers.get('X-ACCESS-TOKEN'))
 
-    make_reservation(staff.id)
+    info = request.json
+    combo_id = info.get('combo')
+    try:
+        combo_id = int(combo_id)
+    except Exception as e:
+        abort(make_response(jsonify(errcode=STATUS_COMBO_ID_INVALID, message=MESSAGES[STATUS_COMBOX_ID_INVALID]), 400))
 
-    return jsonify(reservation_status(staff.id)), 201
+    if make_reservation(staff.id, combo_id) >= 0:
+        return jsonify(reservation_status(staff.id)), 201
+    else:
+        abort(make_response(jsonify(errcode=STATUS_COMBO_ID_INVALID, message=MESSAGES[STATUS_COMBO_ID_INVALID]), 400))
 
 @api.route('/reservation/cancel', methods=['POST'])
 @login_required
@@ -325,11 +335,15 @@ def cancel_reservation():
 
     return jsonify(reservation_status(staff.id)), 201
 
-def make_reservation(staff_id):
+def make_reservation(staff_id, combo_id) -> int:
     this_week_days = get_week_days()
     reservation = Reservation.query.filter(Reservation.staff_id==staff_id,
                                         Reservation.occur_time.cast(Date)>=this_week_days[0],
                                         Reservation.occur_time.cast(Date)<=this_week_days[-1]).first()
+    combo = Combo.query.get(combo_id)
+    if not combo:
+        return -1
+
     #if reservation:
     #    reserved = True
     #else:
@@ -340,17 +354,38 @@ def make_reservation(staff_id):
     if not reservation:
         reservation = Reservation()
         reservation.staff_id = staff_id
+        reservation.combo_id = combo.id
         reservation.reservation = 1 # 预约下周食材
         #reservation.occur_time = checkin_time
         db.session.add(reservation)
     else:
         reservation.reservation += 1
+        reservation.combo_id = combo.id
         #reserved = True
     db.session.commit()
+
+    return reservation.reservation
 
 @api.route('/reservation/pickup', methods=['POST'])
 @login_required
 def reservation_pickup():
+    staff = get_staff(request.headers.get('X-ACCESS-TOKEN'))
+    this_week_days = get_week_days()
+
+    reservations = Reservation.query.filter(Reservation.staff_id==staff.id, Reservation.occur_time.cast(Date) >= this_week_days[0], Reservation.occur_time.cast(Date) <= this_week_days[-1]).all()
+    if not reservations:
+        abort(make_response(jsonify(errcode=STATUS_NOT_RESERVED, message=MESSAGES[STATUS_NOT_RESERVED]), 404)) # not found any reservation
+
+    for reservation in reservations:
+        reservation.pickup_time = datetime.now()
+        reservation.update_time = datetime.now()
+
+    db.session.commit()
+
+    #return jsonify({'pickedup': True, 'time': reservations[0].pickup_time}), 201
+    return jsonify(reservation_status(staff.id)), 201
+
+def reservation_pickup_lastweek():
     staff = get_staff(request.headers.get('X-ACCESS-TOKEN'))
     last_week_days = get_week_days(-1)
 

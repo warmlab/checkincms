@@ -25,6 +25,7 @@ STATUS_RECIPE_NAME_INVALID = 4010
 STATUS_MEAL_OPTION_INVALID = 4011
 STATUS_TOGO_ID_INVALID = 4012
 STATUS_TOGO_STATUS_INVALID = 4013
+STATUS_COMBO_ID_INVALID = 4014
 STATUS_METHOD_NOT_ALLOWED = 5000
 STATUS_CANNOT_DECRYPT = 5001
 
@@ -54,6 +55,7 @@ MESSAGES = {
     STATUS_MEAL_OPTION_INVALID: 'the meal option in request is invalid',
     STATUS_TOGO_ID_INVALID: 'the togo id in request is invalid',
     STATUS_TOGO_STATUS_INVALID: 'the togo status in request is invalid',
+    STATUS_COMBO_ID_INVALID: 'the combo id in request is invalid',
     STATUS_METHOD_NOT_ALLOWED: 'the method not allowed in request',
     STATUS_CANNOT_DECRYPT: 'cannot decrypt the request things',
 }

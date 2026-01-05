@@ -6,7 +6,7 @@ from sqlalchemy import or_
 from . import api
 from .base import login_required, admin_required
 
-from ..models import db, Ingredient
+from ..models import db, Ingredient, Combo
 from ..status import STATUS_INGREDIENT_ID_INVALID, STATUS_INGREDIENT_NAME_INVALID, MESSAGES
 
 @api.route('ingredient/info', methods=['GET'])
@@ -59,4 +59,12 @@ def ingredients_info():
     print(ingredients.all())
 
     r = [c.to_json() for c in ingredients]
+    return jsonify(r), 200
+
+@api.route('combo/list', methods=['GET'])
+@login_required
+def combo_list():
+    comboes = Combo.query.filter().order_by(Combo.id)
+
+    r = [c.to_json() for c in comboes]
     return jsonify(r), 200

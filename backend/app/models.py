@@ -212,6 +212,7 @@ class Combo(db.Model): # 套餐
 
     def __repr__(self) -> str:
         return self.name
+
     
 class ComboIngredient(db.Model):
     __tablename__ = 'combo_ingredient'

@@ -22,7 +22,7 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 
 from .. import myfilters, mail
 from ..models import MEAL_LUNCH, MEAL_SUPPER
-from ..models import Staff, CheckInHistory, Reservation, Recipe
+from ..models import Staff, CheckInHistory, Reservation, Recipe, Combo
 from ..utils import get_week_days, get_days
 from ..status import STATUS_EMAIL_NOT_FOUND, STATUS_REQUIRED_ARG_INVALID, MESSAGES
 from ..myrequest import get_staff
@@ -239,6 +239,8 @@ def reservation_records(name: str, company_ids: List[int], time_period: List[dat
         staffs = Staff.query.filter(concat(Staff.last_name, Staff.first_name).like('%{}%'.format(name.strip())),
                                     Staff.company_id.in_(company_ids), Staff.is_active==True)
 
+    total_combo = {}
+
     records = []
     for staff in staffs:
         reservations = Reservation.query\
@@ -250,7 +252,13 @@ def reservation_records(name: str, company_ids: List[int], time_period: List[dat
 
             rs = []
             for reservation in reservations:
-                rs.append(reservation.to_json())
+                tmp = reservation.to_json()
+                tmp['combo'] = reservation.combo.to_json()
+                if not total_combo.get(reservation.combo.id):
+                    total_combo[reservation.combo.id] = 1
+                else:
+                    total_combo[reservation.combo.id] += 1
+                rs.append(tmp)
                 if reservation.pickup_time:
                     total_pickup += 1
         
@@ -259,9 +267,20 @@ def reservation_records(name: str, company_ids: List[int], time_period: List[dat
             r = {'staff': staff.to_json(), 'reservations': []}
         records.append(r)
 
+        cs = []
+        combos = Combo.query.all()
+        for c in combos:
+            print(c)
+            cj = c.to_json()
+            if not total_combo.get(c.id):
+                cj['total'] = 0
+            else:
+                cj['total'] = total_combo[c.id]
+            cs.append(cj)
+
     return {'begin_date': time_period[0], 'end_date': time_period[-1],
             'total_person': total_person, 'total_reservation': total_reservation, 'total_pickup': total_pickup,
-            'records': records}
+            'combos': cs, 'records': records}
 
 @api.route('/statistics/reservation/email', methods=['POST'])
 @admin_required
@@ -273,7 +292,7 @@ def reservation_records_email():
     #row_header, records, total_checkin, total_person = parse_data_from_client(data)
     records = reservation_records(*parse_data_from_client(data))
     ## to generate excel file
-    row_header = ['#', '姓名', '公司', '预约时间', '领取时间']
+    row_header = ['#', '姓名', '公司', '套餐类型', '预约时间', '领取时间']
     bytesIO = BytesIO()
     #excel_reservation_record(bytesIO, row_header, records, [['预约总人数', total_person, '总人数', len(records)], ['预约总次数', total_checkin]])
     excel_reservation_record(bytesIO, row_header, records)
@@ -362,6 +381,7 @@ def excel_reservation_record(bytesIO, row_header, records):
         print(record)
         a = [index, record['staff']['last_name'] + record['staff']['first_name'], record['staff']['company']['name']]
         for reservation in record['reservations']:
+            a.append(reservation['combo']['name'])
             a.append(reservation['occur_time'])
             if reservation['pickup_time']:
                 a.append(reservation['pickup_time'])
