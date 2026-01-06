@@ -296,23 +296,25 @@ def reservation_records_email():
     bytesIO = BytesIO()
     #excel_reservation_record(bytesIO, row_header, records, [['预约总人数', total_person, '总人数', len(records)], ['预约总次数', total_checkin]])
     excel_reservation_record(bytesIO, row_header, records)
+    bytesIO.seek(0)
     # message = Message(subject='预约领取统计表', sender='warmlab@outlook.com', recipients=[staff.email])
     message = MIMEMultipart()
     message['From'] = 'axu307@gmail.com'
     message['To'] =  staff.email
     message['Subject'] = '预约领取统计表'
-    if len(row_header) > 3:
+    if len(row_header) > 4:
         #message.body = "您好，附件中包含了从{}到{}日的预约领取信息。".format(row_header[3], row_header[-1])
-        message.attach(MIMEText("您好，附件中包含了从{}到{}日的预约领取信息。".format(row_header[3], row_header[-1]), 'plain'))
+        message.attach(MIMEText("您好，附件中包含了从{}到{}日的预约领取信息。".format(row_header[4], row_header[-1]), 'plain'))
     else:
         #message.body = "您好，附件中包含了一些预约领取信息。"
-        message.attach(MIMEText("您好，附件中包含了一些预约领取信息。".format(row_header[3], row_header[-1]), 'plain'))
+        message.attach(MIMEText("您好，附件中包含了一些预约领取信息。"))
     #message.attach("reservation.xlsx", "application/vnd.ms-excel", bytesIO.getvalue())
     #mail.send(message)
 
-    part = MIMEBase('application', "octet-stream")
-    part.set_payload(bytesIO.getvalue(), charset='utf-8')
-    #part.set_payload(bytesIO.read())
+    #part = MIMEBase('application', "octet-stream")
+    part = MIMEBase('application', "vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    #part.set_payload(bytesIO.getvalue(), charset='utf-8')
+    part.set_payload(bytesIO.read())
     encoders.encode_base64(part)
     part.add_header('Content-Disposition',
                     'attachment; filename="reservation.xlsx"')
